@@ -15,7 +15,7 @@ Run
 
 ![Bracekt html5](http://i62.tinypic.com/1564fow.png)
 
-Yasin Kuyu - [Insya Interaktif](www.insya.com)
+Yasin Kuyu - [Insya](http://insya.com)
 
 License
 MIT
