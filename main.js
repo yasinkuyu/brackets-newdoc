@@ -54,25 +54,12 @@ define(function (require, exports, module) {
     var sidebar = $("#sidebar"),
         toolbar = $("#main-toolbar");
 
- 	// Create Untitled Document function
-    function handleFileNew2()
-	{
-        var doc = DocumentManager.createUntitledDocument(docIndex++, ".html");
-        DocumentManager.setCurrentDocument(doc);
-        EditorManager.focusEditor();
-        doc.setText(Html5Template);
-    }
-
-
     /**
      * Create a new untitled document in the workingset, and make it the current document.
      * Promise is resolved (synchronously) with the newly-created Document.
      */
     function handleFileNew() {
-        //var defaultExtension = PreferencesManager.get("defaultExtension");
-        //if (defaultExtension) {
-        //    defaultExtension = "." + defaultExtension;
-        //}
+
         var defaultExtension = ".html";  // disable preference setting for now
 
         var doc = DocumentManager.createUntitledDocument(docIndex++, defaultExtension);
