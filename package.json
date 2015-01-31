@@ -1,10 +1,10 @@
 {
     "name": "insya.newdocument",
     "title": "New Html5 Document",
-    "description": "Brackets new html5 document",
+    "description": "Brackets New Html5 document",
     "homepage": "https://github.com/yasinkuyu/brackets-newdoc",
-    "version": "0.0.1",
-    "author": "Yasin Kuyu @yasinkuyu - Insya Interaktif www.insya.com",
+    "version": "0.0.3",
+    "author": "Yasin Kuyu @yasinkuyu - Insya www.insya.com",
     "license": "MIT",
     "engines": {
         "brackets": ">=0.24.0"
