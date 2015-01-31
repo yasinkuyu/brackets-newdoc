@@ -44,6 +44,7 @@ define(function (require, exports, module) {
         CommandManager              = brackets.getModule("command/CommandManager"),
         KeyBindingManager           = brackets.getModule("command/KeyBindingManager"),
         EditorManager               = brackets.getModule("editor/EditorManager"),
+        MainViewManager             = brackets.getModule("view/MainViewManager"),
         Menus                       = brackets.getModule("command/Menus");
 
     // Template file
@@ -54,15 +55,52 @@ define(function (require, exports, module) {
         toolbar = $("#main-toolbar");
 
  	// Create Untitled Document function
-    function handleFileNew()
+    function handleFileNew2()
 	{
         var doc = DocumentManager.createUntitledDocument(docIndex++, ".html");
         DocumentManager.setCurrentDocument(doc);
         EditorManager.focusEditor();
         doc.setText(Html5Template);
-
     }
 
+
+    /**
+     * Create a new untitled document in the workingset, and make it the current document.
+     * Promise is resolved (synchronously) with the newly-created Document.
+     */
+    function handleFileNew() {
+        //var defaultExtension = PreferencesManager.get("defaultExtension");
+        //if (defaultExtension) {
+        //    defaultExtension = "." + defaultExtension;
+        //}
+        var defaultExtension = ".html";  // disable preference setting for now
+
+        var doc = DocumentManager.createUntitledDocument(docIndex++, defaultExtension);
+        MainViewManager._edit(MainViewManager.ACTIVE_PANE, doc);
+        
+        // Set template
+        handleTempate(Html5Template);
+        
+        return new $.Deferred().resolve(doc).promise();
+       
+    }
+    
+    function handleTempate(templateContent)
+    {
+        
+        try
+        {
+            
+           // Detect active editor
+           var activeEditor = EditorManager.getActiveEditor();
+            
+               // Set template content
+               activeEditor.document.replaceRange(templateContent, activeEditor.getCursorPos());
+        }
+        catch(err){}
+       
+    }
+    
     // Sidebar double-click event
     sidebar.on('dblclick', 'div', function(e) {
 
